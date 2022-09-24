@@ -1,52 +1,39 @@
 <?php
-if(isset($_GET['id'])){
-    include ('../db.php');
-    $id = $_GET['id'];
-    $query = mysqli_query($con,
-    "SELECT  name, genre, realese, season, synopsis FROM moviess WHERE id='$id'") or
-    die(mysqli_error($con));
-    $data = mysqli_fetch_assoc($query);
-    
-    }include '../component/sidebar.php'
-
+include '../component/sidebar.php'
 ?>
-
 <div class="container p-3 m-4 h-100" style="background-color: #FFFFFF; border-top: 5px
 solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0,
 0.19);" >
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="body d-flex justify-content-between">
-<h4>EDIT MOVIE</h4>
-<td>
+<h4>ADD SERIES</h4>
+<a href="../page/listSeriesProcess.php?id='.$data['id'].'"> 
 
-<a href="../page/editMovieProcess.php?id='.$data['id'].'">
-<i style="color: red" class="fa fa-pencil fa-2x"></i>
+<i style="color: red" class="fa fa-plus fa-2x"></i>
 </a>
-</td>
 </div>
 <hr>
-<table class="table ">
+<table class="table">
 <thead>
-<title>Edit Movie Page</title>
 </head>
 
 <body>
 
-<div class="card-header fw-bold">Edit Movie</div>
+
 <div class="card-body">
-<form action="../process/editMovieProcess.php"
+<form action="../process/addSeriesProcess.php"
 method="post">
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Name</label>
-<input type="text" class="form-control" id="nameMovie" name="nameMovie">
-<input class="form-control" id="name" name="name" aria-describedby="emailHelp" value=<?php echo "$data[name]" ?>>
+<input class="form-control" id="name" name="name"
+aria-describedby="emailHelp">
 </div>
 
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Genre</label>
 <select class="form-select" aria-label="Default
-select example" name="genre" id="genre"> value=<?php echo "$data[genre]" ?>>
+select example" name="genre" id="genre">
 <option value="Reguler">Action</option>
 <option value="Platinum">Romance</option>
 <option value="Gold">Comedy</option>
@@ -54,30 +41,36 @@ select example" name="genre" id="genre"> value=<?php echo "$data[genre]" ?>>
 </div>
 
 <div class="mb-3">
-<label for="exampleInputEmail1" class="formlabel">Realese</label>
-<input class="form-control" id="realese"
-name="realese" aria-describedby="emailHelp" alue=<?php echo "$data[realese]" ?>>
+<label for="exampleInputEmail1" class="formlabel">Realease</label>
+<input class="form-control" id="realease"
+name="realease" aria-describedby="emailHelp">
+</div>
+
+<div class="mb-3">
+<div class="mb-3">
+<label for="exampleInputEmail1" class="formlabel">Episode</label>
+<input class="form-control" id="episode"
+name="episode" aria-describedby="emailHelp">
 </div>
 
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Season</label>
 <input class="form-control" id="season"
-name="season" aria-describedby="emailHelp" value=<?php echo "$data[season]" ?>>
+name="season" aria-describedby="emailHelp">
 </div>
 
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Synopsis</label>
 <input class="form-control" id="synopsis"
-name="synopsis" aria-describedby="emailHelp" value=<?php echo "$data[synopsis]" ?>>
+name="synopsis" aria-describedby="emailHelp">
 </div>
 
 </div>
 <div class="d-grid gap-2">
 <button type="submit" class="btn btn-primary"
-name="editMovie">Edit Movie</button>
+name="saveSeries">SAVE</button>
 </div>
 </form>
-
 </div>
 </div>
 </div>

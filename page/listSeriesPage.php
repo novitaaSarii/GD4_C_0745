@@ -7,9 +7,9 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="body d-flex justify-content-between">
-<h4>LIST MOVIE</h4>
+<h4>LIST SERIES</h4>
 
-<a href="../page/addMoviePage.php?id='.$data['id'].'">
+<a href="../page/addSeriesPage.php?id='.$data['id'].'">
 <i style="color: red" class="fa fa-plus fa-2x" ></i>
 
 </a>
@@ -21,7 +21,8 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
 <th scope="col">No</th>
 <th scope="col">Name</th>
 <th scope="col">Genre</th>
-<th scope="col">Realese</th>
+<th scope="col">Realease</th>
+<th scope="col">Episode</th>
 <th scope="col">Season</th>
 <th scope="col"></th>
 </tr>
@@ -29,7 +30,7 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
 <tbody>
     
 <?php
-$query = mysqli_query($con, "SELECT * FROM moviess") or
+$query = mysqli_query($con, "SELECT * FROM series") or
 die(mysqli_error($con));
 if (mysqli_num_rows($query) == 0) {
 echo '<tr> <td colspan="7"> Tidak ada data </td> </tr>';
@@ -41,23 +42,25 @@ echo'
 <th scope="row">'.$no.'</th>
 <td>'.$data['name'].'</td>
 <td>'.$data['genre'].'</td>
-<td>'.$data['realese'].'</td>
+<td>'.$data['realease'].'</td>
+<td>'.$data['episode'].'</td>
 <td>'.$data['season'].'</td>
+
 <td>
 
-<a href="../process/deleteMovieProcess.php?id='.$data['id'].'"
-onClick="return confirm ( \'Are you sure want to delete this
+
+<a href="../page/editSeriesPage.php?id='.$data['name'].'"
+onClick="return confirm ( \'Are you sure want to delete
 data?\')">
- 
 <i style="color: red" class="fa fa-trash fa-2x"></i>
 </a>
 
-<a href="../page/editMoviePage.php?id='.$data['name'].'"
-onClick="return confirm ( \'Are you sure want to add new
+<a href="../page/editSeriesPage.php?id='.$data['id'].'"
+onClick="return confirm ( \'Are you sure want to edit this
 data?\')">
-
 <i style="color: green" class="fa fa-pencil fa-2x"></i>
 </a>
+ 
 
 </td>
 </tr>';
